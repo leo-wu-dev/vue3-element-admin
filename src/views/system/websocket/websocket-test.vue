@@ -115,9 +115,7 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import { ElMessage } from "element-plus";
 import { useWebSocketDict } from "@/hooks/useWebSocketDict";
-import { useUserStore } from "@/store/modules/user";
-import { getDictList } from "@/api/dict";
-import { getOnlineUsers, getOnlineStats } from "@/api/user";
+import { useUserStore } from "@/store/modules/user.store.js";
 
 const userStore = useUserStore();
 const { connectWebSocket, disconnectWebSocket, isConnected, sendMessage, subscribe } =
@@ -210,7 +208,7 @@ const setupSubscriptions = () => {
 const sendDictUpdate = async () => {
   try {
     // 调用字典API触发更新
-    await getDictList({ dictCode: dictForm.value.dictCode });
+    // await getDictList({ dictCode: dictForm.value.dictCode });
     ElMessage.success("字典更新通知已发送");
   } catch (error) {
     ElMessage.error(`发送失败: ${error.message}`);
@@ -252,24 +250,24 @@ const sendBroadcast = () => {
 // 获取在线用户
 const fetchOnlineUsers = async () => {
   loadingUsers.value = true;
-  try {
-    const res = await getOnlineUsers();
-    onlineUsers.value = res.data;
-  } catch (error) {
-    ElMessage.error(`获取在线用户失败: ${error.message}`);
-  } finally {
-    loadingUsers.value = false;
-  }
+  // try {
+  //   const res = await getOnlineUsers();
+  //   onlineUsers.value = res.data;
+  // } catch (error) {
+  //   ElMessage.error(`获取在线用户失败: ${error.message}`);
+  // } finally {
+  //   loadingUsers.value = false;
+  // }
 };
 
 // 获取在线用户统计
 const fetchOnlineStats = async () => {
-  try {
-    const res = await getOnlineStats();
-    onlineStats.value = res.data;
-  } catch (error) {
-    ElMessage.error(`获取在线统计失败: ${error.message}`);
-  }
+  // try {
+  //   const res = await getOnlineStats();
+  //   onlineStats.value = res.data;
+  // } catch (error) {
+  //   ElMessage.error(`获取在线统计失败: ${error.message}`);
+  // }
 };
 
 // 添加消息日志
