@@ -9,7 +9,7 @@ COPY ./dist /usr/share/nginx/html
 
 # 复制自定义的 Nginx 配置文件（可选）
 # 如果你有自定义的 Nginx 配置，可以在这里复制
-# COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
 # 开放 80 端口
 EXPOSE 80
